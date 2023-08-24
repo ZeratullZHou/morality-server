@@ -1,10 +1,10 @@
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: 'Gundamseed20',
-    database: 'mysql',
-}
+    host: 'mysql.sqlpub.com',
+    user: 'zeratull',
+    password: 'cad813109a0d9e4e',
+    database: 'morality',
+};
 
 module.exports = {
-    dbConfig
-}
+    dbConfig,
+};

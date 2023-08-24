@@ -6,7 +6,9 @@ const tableNameNote = 'SJJY_USERNOTE';
 // 校验用户是否已存在
 async function validateUser(username) {
     const sql = `
-    select * from ${tableName} where username = '${username}' 
+    SELECT * FROM ${tableName} 
+    WHERE username = '${username}' 
+    AND isdeleted <> 1
   `;
     const results = await db.query(sql);
     if (results.status === 200) {
