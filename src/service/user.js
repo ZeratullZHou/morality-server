@@ -4,10 +4,10 @@ const tableName = 'moral_user';
 const tableNameNote = 'SJJY_USERNOTE';
 
 // 校验用户是否已存在
-async function validateUser(username) {
+async function validateUser(username, name) {
     const sql = `
     SELECT * FROM ${tableName} 
-    WHERE username = '${username}' 
+    WHERE username = '${username}' OR name = '${name}'
     AND isdeleted <> 1
   `;
     const results = await db.query(sql);

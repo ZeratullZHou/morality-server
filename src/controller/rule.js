@@ -39,14 +39,16 @@ async function addRule(ctx) {
 async function getRule(ctx) {
     try {
         const result = await db.query(`
-            SELECT * FROM moral_rule ORDER BY create_time DESC
+            SELECT * FROM moral_rule 
+                     WHERE isdeleted <> 1
+                     ORDER BY create_time DESC
         `);
         const data = result.results;
         data.forEach(item => {
             item.rule = JSON.parse(item.rule);
             item.create_time = Math.round(new Date(item.create_time).getTime());
             delete item.isdeleted;
-        })
+        });
         if (result.status === 200) {
             ctx.body = {
                 code: 200,

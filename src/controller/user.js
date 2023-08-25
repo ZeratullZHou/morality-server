@@ -4,14 +4,13 @@ const db = require('../db');
 async function addUser(ctx) {
     const body = ctx.request.body;
     const { username, userpasswd, name } = body;
-    console.log(body);
     if (username && userpasswd && name) {
         try {
-            const hasUser = await validateUser(username);
+            const hasUser = await validateUser(username, name);
             if (!hasUser) {
                 const result = await db.query(`
-      insert into moral_user (username,userpasswd,name)
-      values ('${username}','${userpasswd}', '${name}');
+      INSERT INTO moral_user (username,userpasswd,name)
+      VALUES ('${username}','${userpasswd}', '${name}');
     `);
                 if (result.status === 200) {
                     ctx.body = {
