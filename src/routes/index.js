@@ -1,13 +1,12 @@
 const router = require('koa-router')();
+const User = require('./user');
+const Rule = require('./rule');
 
-const { addUser, deleteUser, setUserScore, selectUser } = require('../controller');
+// 路由前缀
+router.prefix('/api')
 
-router.post('/add-user', addUser);
-
-router.delete('/delete-user', deleteUser);
-
-router.put('/set-score', setUserScore);
-
-router.get('/get-userinfo', selectUser);
+// 注册
+User(router);
+Rule(router);
 
 module.exports = router;

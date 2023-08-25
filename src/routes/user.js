@@ -1,13 +1,11 @@
-const router = require('koa-router')();
+const { addUser, deleteUser, setUserScore, selectUser } = require('../controller');
 
-router.prefix('/users');
+module.exports = function User(router) {
+    router.post('/add-user', addUser);
 
-router.get('/', function* (next) {
-    this.body = 'this is a users response!';
-});
+    router.delete('/delete-user', deleteUser);
 
-router.get('/bar', function* (next) {
-    this.body = 'this is a users/bar response!';
-});
+    router.put('/set-score', setUserScore);
 
-module.exports = router;
+    router.get('/get-userinfo', selectUser);
+};
