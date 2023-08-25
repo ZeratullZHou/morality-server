@@ -6,7 +6,7 @@ async function addRule(ctx) {
     if (username && rule) {
         try {
             const result = await db.query(`
-                INSERT INTO 'moral_rule' (rule,create_user)
+                INSERT INTO moral_rule (rule,create_user)
                 VALUES ('${JSON.stringify(rule)}', '${username}');
             `);
             if (result.status === 200) {
